@@ -5,6 +5,9 @@ on:
     branches: [main]
   workflow_dispatch:
 
+permissions:
+  contents: write
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -24,7 +27,6 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      # Aligns every package with the exact versions this Expo SDK expects
       - name: Align dependency versions with the Expo SDK
         run: npx expo install --fix
 
@@ -40,9 +42,20 @@ jobs:
           chmod +x gradlew
           ./gradlew assembleRelease --no-daemon
 
-      - name: Upload APK
+      - name: Rename APK
+        run: mv android/app/build/outputs/apk/release/*.apk Machine-Tracker.apk
+
+      - name: Upload APK artifact
         uses: actions/upload-artifact@v4
         with:
           name: machine-tracker-apk
-          path: android/app/build/outputs/apk/release/*.apk
+          path: Machine-Tracker.apk
           if-no-files-found: error
+
+      - name: Publish release
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh release create "v1.0.${{ github.run_number }}" Machine-Tracker.apk \
+            --title "Machine Tracker v1.0.${{ github.run_number }}" \
+            --notes "Android APK, build #${{ github.run_number }}" --latest
