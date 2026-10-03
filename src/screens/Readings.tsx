@@ -46,7 +46,9 @@ export function Readings({ mid, nav }: { mid: string; nav: Nav }) {
           <Empty badge="0" title="No Daily Readings" text="Add today's machinery reading to begin tracking usage." action={<Btn kind="p" onPress={add}>+ Add Reading</Btn>} />
         ) : (
           <>
-            <Btn w style={{ marginBottom: 12 }} onPress={() => ui.openSheet(<ExportSheet m={m} />)}>⬇ Export to Excel</Btn>
+            <View style={{ alignItems: 'flex-end', marginBottom: 12 }}>
+              <Btn xs onPress={() => ui.openSheet(<ExportSheet m={m} />)}>⬇ Export to Excel</Btn>
+            </View>
             <View style={{ backgroundColor: c.card, borderWidth: 1, borderColor: c.line, borderRadius: 20, overflow: 'hidden', elevation: isDark ? 3 : 2, shadowColor: isDark ? '#000' : '#3C321E' }}>
               <View style={{ flexDirection: 'row', backgroundColor: c.bdg, paddingVertical: 12, paddingHorizontal: 10, alignItems: 'flex-end' }}>
                 <Text style={[th, { flex: flex[0] }]}>Date</Text>

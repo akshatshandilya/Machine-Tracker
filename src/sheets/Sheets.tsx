@@ -238,8 +238,13 @@ export function ReadingSheet({ m, reading }: { m: Machine; reading?: Reading }) 
         </Col>
         <Col><Label>End Time</Label><TimeField value={et} onChange={setEt} disabled={ro} /></Col>
       </Two>
-      <Label>Diesel/Petrol Quantity <Text style={{ fontWeight: '400' }}>(optional)</Text></Label>
-      <Field disabled={ro} keyboardType="decimal-pad" value={fuel} placeholder="50" onChangeText={setFuel} />
+      <Two>
+        <Col>
+          <Label>Diesel/Petrol Quantity <Text style={{ fontWeight: '400' }}>(optional)</Text></Label>
+          <Field disabled={ro} keyboardType="decimal-pad" value={fuel} placeholder="50" onChangeText={setFuel} />
+        </Col>
+        <Col><View /></Col>
+      </Two>
       <Card style={{ marginTop: 16 }}>
         <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8 }}>
           <Mut>Total Utilisation:</Mut>

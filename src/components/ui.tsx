@@ -52,21 +52,21 @@ export function Enter({ children, delay = 0, duration = 220, style }: { children
 
 /* ---------- Buttons ---------- */
 type Kind = 'p' | 's' | 'd' | 'g';
-export function Btn({ kind = 's', sm, w, onPress, children, style, color, borderColor }: {
-  kind?: Kind; sm?: boolean; w?: boolean; onPress?: () => void; children: React.ReactNode;
+export function Btn({ kind = 's', sm, xs, w, onPress, children, style, color, borderColor }: {
+  kind?: Kind; sm?: boolean; xs?: boolean; w?: boolean; onPress?: () => void; children: React.ReactNode;
   style?: StyleProp<ViewStyle>; color?: string; borderColor?: string;
 }) {
   const { c } = useTheme();
   const fg = color ?? (kind === 'p' ? c.acink : kind === 'd' ? '#fff' : kind === 'g' ? c.mut : c.ink);
   const inner: ViewStyle = {
-    minHeight: sm ? 44 : 52, paddingHorizontal: sm ? 14 : 18, borderRadius: 14, flexDirection: 'row',
-    alignItems: 'center', justifyContent: 'center', gap: 8, overflow: 'hidden',
+    minHeight: xs ? 36 : sm ? 44 : 52, paddingHorizontal: xs ? 12 : sm ? 14 : 18, borderRadius: xs ? 12 : 14, flexDirection: 'row',
+    alignItems: 'center', justifyContent: 'center', gap: xs ? 6 : 8, overflow: 'hidden',
   };
   if (kind === 'p') Object.assign(inner, { backgroundColor: '#FFB920', elevation: 5, shadowColor: '#FFA800' });
   if (kind === 's') Object.assign(inner, { backgroundColor: c.card, borderWidth: 1.5, borderColor: borderColor ?? c.line });
   if (kind === 'd') Object.assign(inner, { backgroundColor: c.bad, borderWidth: 2, borderColor: 'transparent' });
   const content = typeof children === 'string' ? (
-    <Text style={{ color: fg, fontSize: sm ? 15 : 16, fontWeight: '700' }}>{children}</Text>
+    <Text style={{ color: fg, fontSize: xs ? 14 : sm ? 15 : 16, fontWeight: '700' }}>{children}</Text>
   ) : children;
   return (
     <Pressable
