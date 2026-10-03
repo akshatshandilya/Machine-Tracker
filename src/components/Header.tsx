@@ -10,8 +10,8 @@ import { useSplashActive } from '../splash/splashState';
 /** Target the splash logo flies to. */
 export const headerLogoRef = createRef<View>();
 
-export function Header({ title, sub, back, extra, noTheme, onBack }: {
-  title: string; sub?: string; back?: boolean; extra?: React.ReactNode; noTheme?: boolean; onBack?: () => void;
+export function Header({ title, sub, back, extra, noTheme, onBack, wrapSub }: {
+  title: string; sub?: string; back?: boolean; extra?: React.ReactNode; noTheme?: boolean; onBack?: () => void; wrapSub?: boolean;
 }) {
   const { isDark, toggle } = useTheme();
   const insets = useSafeAreaInsets();
@@ -45,7 +45,7 @@ export function Header({ title, sub, back, extra, noTheme, onBack }: {
         )}
         <View style={{ flex: 1, minWidth: 0 }}>
           <Text numberOfLines={1} style={{ color: '#fff', fontSize: 20, fontWeight: '700', letterSpacing: -0.2 }}>{title}</Text>
-          {sub ? <Text numberOfLines={1} style={{ color: '#9FB2CF', fontSize: 13, letterSpacing: 0.26 }}>{sub}</Text> : null}
+          {sub ? <Text numberOfLines={wrapSub ? 2 : 1} style={{ color: '#9FB2CF', fontSize: 13, letterSpacing: 0.26 }}>{sub}</Text> : null}
         </View>
         {extra}
         {!noTheme && (

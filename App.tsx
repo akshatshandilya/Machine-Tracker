@@ -11,6 +11,7 @@ import { MachineListing } from './src/screens/MachineListing';
 import { ManageMachinery } from './src/screens/ManageMachinery';
 import { MachineDetails } from './src/screens/MachineDetails';
 import { Readings } from './src/screens/Readings';
+import { About } from './src/screens/About';
 import { SplashOverlay } from './src/splash/SplashOverlay';
 import { setSplashActive } from './src/splash/splashState';
 import { Nav, Route } from './src/nav';
@@ -46,6 +47,7 @@ function Screens() {
       {r.n === 'mg' && <ManageMachinery pid={r.pid} nav={nav} />}
       {r.n === 'md' && <MachineDetails mid={r.mid} nav={nav} />}
       {r.n === 'rd' && <Readings mid={r.mid} nav={nav} />}
+      {r.n === 'about' && <About nav={nav} />}
     </View>
   );
 }

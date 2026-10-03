@@ -6,7 +6,7 @@ import { useStore } from '../data/store';
 import { useUi } from '../components/UiProvider';
 import { Header } from '../components/Header';
 import { Bold, Btn, Card, H2, H3, Mut, Page } from '../components/ui';
-import { TrashIcon } from '../components/Icons';
+import { InfoIcon, TrashIcon } from '../components/Icons';
 import { AddProjectSheet, ConfirmSheet } from '../sheets/Sheets';
 import { hasD, isActive } from '../data/logic';
 import { Nav } from '../nav';
@@ -20,7 +20,23 @@ export function Projects({ nav }: { nav: Nav }) {
 
   return (
     <View style={{ flex: 1 }}>
-      <Header title="Machine Tracker" sub="Daily Construction Machinery Tracking" />
+      <Header
+        title="Machine Tracker"
+        sub="Daily Construction Machinery Tracking"
+        wrapSub
+        extra={
+          <Pressable
+            accessibilityLabel="About Machine Tracker"
+            onPress={() => nav.go({ n: 'about' })}
+            style={({ pressed }) => ({
+              width: 38, height: 38, borderRadius: 12, alignItems: 'center', justifyContent: 'center',
+              backgroundColor: pressed ? 'rgba(255,255,255,.22)' : 'rgba(255,255,255,.12)', borderWidth: 1, borderColor: 'rgba(255,255,255,.14)',
+            })}
+          >
+            <InfoIcon size={18} color="#fff" />
+          </Pressable>
+        }
+      />
       <Page bottomInset={insets.bottom}>
         {db.projects.length === 0 ? (
           <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center', paddingVertical: 60 }}>

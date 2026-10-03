@@ -18,6 +18,7 @@ export const PenIcon = (p: P) => (
 );
 export const ClockIcon = (p: P) => <Base {...p} size={p.size ?? 20}><Circle cx="12" cy="12" r="9" /><Path d="M12 7v5l3 2" /></Base>;
 export const TrashIcon = (p: P) => <Base {...p}><Path d="M3 6h18M8 6V4h8v2M6 6l1 14h10l1-14M10 11v6M14 11v6" /></Base>;
+export const InfoIcon = (p: P) => <Base {...p}><Circle cx="12" cy="12" r="9" /><Path d="M12 11v5M12 8h.01" /></Base>;
 export const PlusIcon = (p: P) => <Base {...p}><Path d="M12 5v14M5 12h14" /></Base>;
 export const MoonIcon = (p: P) => <Base {...p}><Path d="M21 13A9 9 0 1 1 11 3a7 7 0 0 0 10 10z" /></Base>;
 export const SunIcon = (p: P) => (
