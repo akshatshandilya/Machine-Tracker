@@ -1,0 +1,43 @@
+{
+  "expo": {
+    "name": "Machine Tracker",
+    "slug": "machine-tracker",
+    "version": "1.1.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon-1024.png",
+    "userInterfaceStyle": "automatic",
+    "backgroundColor": "#0F1B2D",
+    "newArchEnabled": true,
+    "splash": {
+      "image": "./assets/splash-transparent.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#0F1B2D"
+    },
+    "android": {
+      "package": "com.machinetracker.app",
+      "versionCode": 2,
+      "edgeToEdgeEnabled": true,
+      "softwareKeyboardLayoutMode": "resize",
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/adaptive-foreground-1024.png",
+        "backgroundImage": "./assets/adaptive-background-1024.png"
+      },
+      "blockedPermissions": [
+        "android.permission.READ_EXTERNAL_STORAGE",
+        "android.permission.WRITE_EXTERNAL_STORAGE",
+        "android.permission.SYSTEM_ALERT_WINDOW",
+        "android.permission.VIBRATE"
+      ]
+    },
+    "plugins": [
+      [
+        "expo-splash-screen",
+        {
+          "backgroundColor": "#0F1B2D",
+          "image": "./assets/splash-transparent.png",
+          "imageWidth": 200
+        }
+      ]
+    ]
+  }
+}
